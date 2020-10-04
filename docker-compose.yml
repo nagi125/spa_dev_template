@@ -1,17 +1,17 @@
 version: '3'
 services:
-#  nginx:
-#    container_name: nginx
-#    build:
-#      context: ./docker/nginx
-#      dockerfile: Dockerfile
-#    ports:
-#      - 80:80
-#    volumes:
-#      - .:/app
-#    tty: true
-#    depends_on:
-#      - api
+  nginx:
+    container_name: nginx
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - .:/app
+    tty: true
+    depends_on:
+      - api
 #
 #  frontend:
 #    container_name: frontend
