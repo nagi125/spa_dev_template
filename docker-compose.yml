@@ -11,27 +11,27 @@ services:
       - .:/app
     tty: true
     depends_on:
+      - frontend
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./docker/frontend
+      dockerfile: Dockerfile
+    environment:
+      PORT: '3000'
+      HOST: '0.0.0.0'
+      BASE_URL: 'http://localhost'
+      API_URL: 'http://localhost/api/v1'
+    expose:
+      - 3000
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+    restart: always
+    depends_on:
       - api
-#
-#  frontend:
-#    container_name: frontend
-#    build:
-#      context: ./docker/frontend
-#      dockerfile: Dockerfile
-#    environment:
-#      PORT: '3000'
-#      HOST: '0.0.0.0'
-#      BASE_URL: 'http://localhost'
-#      API_URL: 'http://localhost/api/v1'
-#    ports:
-#      - 3000:3000
-#    volumes:
-#      - sync_spa_sample:/app
-#    stdin_open: true
-#    tty: true
-#    restart: always
-#    depends_on:
-#      - backend
 
   api:
     container_name: api
@@ -46,3 +46,4 @@ services:
     expose:
       - 9000
     tty: true
+    restart: always
