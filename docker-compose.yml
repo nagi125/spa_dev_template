@@ -3,7 +3,7 @@ services:
   nginx:
     container_name: nginx
     build:
-      context: ./docker/nginx
+      context: ./.docker/nginx
       dockerfile: Dockerfile
     ports:
       - 80:80
@@ -14,7 +14,7 @@ services:
   web:
     container_name: web
     build:
-      context: ./docker/web
+      context: ./.docker/web
       dockerfile: Dockerfile
     environment:
       PORT: '3000'
@@ -32,7 +32,7 @@ services:
   api:
     container_name: api
     build:
-      context: ./docker/api
+      context: ./.docker/api
       dockerfile: Dockerfile
     environment:
       LANG: 'ja_JP.UTF-8'
