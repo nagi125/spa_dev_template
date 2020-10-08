@@ -7,26 +7,22 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
-    volumes:
-      - .:/app
     tty: true
     depends_on:
-      - frontend
+      - web
 
-  frontend:
-    container_name: frontend
+  web:
+    container_name: web
     build:
-      context: ./docker/frontend
+      context: ./docker/web
       dockerfile: Dockerfile
     environment:
       PORT: '3000'
       HOST: '0.0.0.0'
-      BASE_URL: 'http://localhost'
-      API_URL: 'http://localhost/api/v1'
     expose:
       - 3000
     volumes:
-      - .:/app
+      - ./web:/app
     stdin_open: true
     tty: true
     restart: always
@@ -42,7 +38,7 @@ services:
       LANG: 'ja_JP.UTF-8'
       TZ: 'Asia/Tokyo'
     volumes:
-      - .:/app
+      - ./api:/app
     expose:
       - 9000
     tty: true
