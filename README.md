@@ -2,7 +2,7 @@
 Nuxt + Laravel(Lumen)の開発環境構築テンプレートです。
 
 ### 関係図
-![structure](./doc/images/spa_dev_template.png)
+![structure](./.doc/images/spa_dev_template.png)
 
 ## 開発環境立ち上げ
 ```
